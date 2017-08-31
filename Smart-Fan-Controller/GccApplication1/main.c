@@ -37,7 +37,7 @@ int main(void)
 
     while (1) 
     {
-        //not sure if pwm will be regenerated
+        //not sure if pwm will be regenerated //test2
 		if (PINA2 & (1 << PORTA2)) { //read hall sensor signal, if high
 			//turn on one of the switch
 			PORTA &= ~(1 << PORTA1); //turn off PA1
