@@ -136,7 +136,7 @@ int main(void)
   8a:	80 81       	ld	r24, Z
   8c:	81 60       	ori	r24, 0x01	; 1
   8e:	80 83       	st	Z, r24
-    {
+        //not sure if pwm will be regenerated 
 		if (PINA2 & (1 << PORTA2)) { //read hall sensor signal, if high
 			//turn on one of the switch
 			PORTA &= ~(1 << PORTA1); //turn off PA1
