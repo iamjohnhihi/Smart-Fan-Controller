@@ -1,0 +1,140 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000000de  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000008a  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000000de  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000110  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  0000014c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000000a1  00000000  00000000  0000016c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000074  00000000  00000000  0000020d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000000d1  00000000  00000000  00000281  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  00000354  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000158  00000000  00000000  00000378  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000010  00000000  00000000  000004d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1d c0       	rjmp	.+58     	; 0x3c <__ctors_end>
+   2:	24 c0       	rjmp	.+72     	; 0x4c <__bad_interrupt>
+   4:	23 c0       	rjmp	.+70     	; 0x4c <__bad_interrupt>
+   6:	22 c0       	rjmp	.+68     	; 0x4c <__bad_interrupt>
+   8:	21 c0       	rjmp	.+66     	; 0x4c <__bad_interrupt>
+   a:	20 c0       	rjmp	.+64     	; 0x4c <__bad_interrupt>
+   c:	1f c0       	rjmp	.+62     	; 0x4c <__bad_interrupt>
+   e:	1e c0       	rjmp	.+60     	; 0x4c <__bad_interrupt>
+  10:	1d c0       	rjmp	.+58     	; 0x4c <__bad_interrupt>
+  12:	1c c0       	rjmp	.+56     	; 0x4c <__bad_interrupt>
+  14:	1b c0       	rjmp	.+54     	; 0x4c <__bad_interrupt>
+  16:	1a c0       	rjmp	.+52     	; 0x4c <__bad_interrupt>
+  18:	19 c0       	rjmp	.+50     	; 0x4c <__bad_interrupt>
+  1a:	18 c0       	rjmp	.+48     	; 0x4c <__bad_interrupt>
+  1c:	17 c0       	rjmp	.+46     	; 0x4c <__bad_interrupt>
+  1e:	16 c0       	rjmp	.+44     	; 0x4c <__bad_interrupt>
+  20:	15 c0       	rjmp	.+42     	; 0x4c <__bad_interrupt>
+  22:	14 c0       	rjmp	.+40     	; 0x4c <__bad_interrupt>
+  24:	13 c0       	rjmp	.+38     	; 0x4c <__bad_interrupt>
+  26:	12 c0       	rjmp	.+36     	; 0x4c <__bad_interrupt>
+  28:	11 c0       	rjmp	.+34     	; 0x4c <__bad_interrupt>
+  2a:	10 c0       	rjmp	.+32     	; 0x4c <__bad_interrupt>
+  2c:	0f c0       	rjmp	.+30     	; 0x4c <__bad_interrupt>
+  2e:	0e c0       	rjmp	.+28     	; 0x4c <__bad_interrupt>
+  30:	0d c0       	rjmp	.+26     	; 0x4c <__bad_interrupt>
+  32:	0c c0       	rjmp	.+24     	; 0x4c <__bad_interrupt>
+  34:	0b c0       	rjmp	.+22     	; 0x4c <__bad_interrupt>
+  36:	0a c0       	rjmp	.+20     	; 0x4c <__bad_interrupt>
+  38:	09 c0       	rjmp	.+18     	; 0x4c <__bad_interrupt>
+  3a:	08 c0       	rjmp	.+16     	; 0x4c <__bad_interrupt>
+
+0000003c <__ctors_end>:
+  3c:	11 24       	eor	r1, r1
+  3e:	1f be       	out	0x3f, r1	; 63
+  40:	cf ef       	ldi	r28, 0xFF	; 255
+  42:	d2 e0       	ldi	r29, 0x02	; 2
+  44:	de bf       	out	0x3e, r29	; 62
+  46:	cd bf       	out	0x3d, r28	; 61
+  48:	02 d0       	rcall	.+4      	; 0x4e <main>
+  4a:	1d c0       	rjmp	.+58     	; 0x86 <_exit>
+
+0000004c <__bad_interrupt>:
+  4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
+
+0000004e <main>:
+#include <avr/io.h>
+
+
+int main(void)
+{
+    DDRA |= (1<< DDA1);
+  4e:	d1 9a       	sbi	0x1a, 1	; 26
+
+	TCCR0B |= (1<< CS00);
+  50:	83 b7       	in	r24, 0x33	; 51
+  52:	81 60       	ori	r24, 0x01	; 1
+  54:	83 bf       	out	0x33, r24	; 51
+	// Setting Port A to output
+	//PORTA |= (1<<PORTA1);
+	
+
+	// Fast PWM Mode
+	TCCR0A |=  ((1<< WGM01) | (1<< WGM00));
+  56:	80 b7       	in	r24, 0x30	; 48
+  58:	83 60       	ori	r24, 0x03	; 3
+  5a:	80 bf       	out	0x30, r24	; 48
+	
+	TCCR0B |= (1<< WGM02);
+  5c:	83 b7       	in	r24, 0x33	; 51
+  5e:	88 60       	ori	r24, 0x08	; 8
+  60:	83 bf       	out	0x33, r24	; 51
+
+	// Set Values for Duty Cycle and Frequency
+	uint8_t TOP = 250;
+	uint8_t dutySet = 125;
+	
+	OCR0A = TOP;
+  62:	8a ef       	ldi	r24, 0xFA	; 250
+  64:	86 bf       	out	0x36, r24	; 54
+	OCR0B = dutySet;
+  66:	8d e7       	ldi	r24, 0x7D	; 125
+  68:	8c bf       	out	0x3c, r24	; 60
+
+	TOCPMSA0 &= ~((1<< TOCC0S0) | (1<< TOCC0S1));
+  6a:	e7 e6       	ldi	r30, 0x67	; 103
+  6c:	f0 e0       	ldi	r31, 0x00	; 0
+  6e:	80 81       	ld	r24, Z
+  70:	8c 7f       	andi	r24, 0xFC	; 252
+  72:	80 83       	st	Z, r24
+
+	// Clear OC0B when Compare Match
+	TCCR0A |= (1<< COM0B1);
+  74:	80 b7       	in	r24, 0x30	; 48
+  76:	80 62       	ori	r24, 0x20	; 32
+  78:	80 bf       	out	0x30, r24	; 48
+	
+	TOCPMCOE |= (1<< TOCC0OE);
+  7a:	e6 e6       	ldi	r30, 0x66	; 102
+  7c:	f0 e0       	ldi	r31, 0x00	; 0
+  7e:	80 81       	ld	r24, Z
+  80:	81 60       	ori	r24, 0x01	; 1
+  82:	80 83       	st	Z, r24
+  84:	ff cf       	rjmp	.-2      	; 0x84 <main+0x36>
+
+00000086 <_exit>:
+  86:	f8 94       	cli
+
+00000088 <__stop_program>:
+  88:	ff cf       	rjmp	.-2      	; 0x88 <__stop_program>
