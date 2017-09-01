@@ -1,19 +1,23 @@
 /*
- * GccApplication1.c
+ * PWM50.c
  *
  * Created: 30/08/2017 2:55:53 p.m.
  * Author : blee490
  */ 
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 
 int main(void)
 {
-    DDRA |= (1 << DDA1) | (1<< DDA3); //set PA1 and PA3 as output (to drive the switches) 
-	DDRA &= ~(1 << DDA2); //set PA2 as input (for hall-effect sensor) 
-
+	//Set up pins
+    DDRA |= (1 << DDA1) | (1 << DDA3); //set PA1 and PA3 as output (to drive the switches) 
+	
+	DDRA &= ~(1 << DDA7); //set PA2 as input (for hall-effect sensor) 
+	
 	TCCR0B |= (1<< CS00); // clkI/O/(No prescaling)
+	TCCR2B |= (1<< CS00);
 	
 	// turn on Fast PWM Mode
 	TCCR0A |= ((1<< WGM01) | (1<< WGM00));
@@ -33,18 +37,29 @@ int main(void)
 
 	// Clear OC0B when Compare Match
 	TCCR0A |= (1<< COM0B1);
+	//Enable output to respective pins
 	TOCPMCOE |= (1<< TOCC0OE);
+	
+	//set up interrupt
+	cli();
+	//enable interrupt for PCINT7
+	PCMSK0 |= (1<< PCINT7);
+	//Any logical change causes interrupt
+	MCUCR |= (1<< ISC00);
+	//Enable pin change interrupt 0 
+	GIMSK |= (1<< PCIE0);
+	sei();
 
+	
     while (1) 
     {
 
-        //not sure if pwm will be regenerated 
-		if (PINA2 & (1 << PORTA2)) { //read hall sensor signal, if high
-			//turn on one of the switch
-			PORTA &= ~(1 << PORTA1); //turn off PA1
-			} else { //if hall sensor signal is low
-			PORTA &= ~(1 << PORTA3); //turn off PA3
-			}
     }
+}
+
+ISR(PCINT0_vect) {
+	//toggle output pins (PA3 and PA1) to output 1 PWM at a time
+	TOCPMCOE ^= (1<<TOCC0OE) | (1<<TOCC2OE);
+
 }
 
