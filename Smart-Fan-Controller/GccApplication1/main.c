@@ -11,8 +11,8 @@
 int measurePoint = 0;
 int counter = 0;
 int rpmCounter = 0;
-int requestedRPM = 1000;
-float Duty = 0.5;'
+int requestedRPM = 1000; //for testing purpose
+float Duty = 0.5;
 int interimValue = 0;
 int main(void)
 {
@@ -48,12 +48,12 @@ int main(void)
 
 	// Clear OC0B when Compare Match
 	TCCR0A |= (1<< COM0B1);
-	//Enable output to respective pins
-
+	
+    //Enable output to respective pins
 	if (PINA == (1<<PORTA7)){
-		TOCPMCOE |= (1<< TOCC0OE); //works with 1
+		TOCPMCOE |= (1<< TOCC0OE); //works when hall sensor = 1
 	} else {
-		TOCPMCOE |= (1<< TOCC2OE); //works with 0
+		TOCPMCOE |= (1<< TOCC2OE); //works when hall sensor = 0
 	}
 
 	
@@ -78,12 +78,12 @@ int main(void)
 	
     while (1) 
     {
-
+        
 		if (actualRPM > requestedRPM){
-			duty -= 0.01;
+			duty -= 0.01; //value to be determined
 		}
 		else if (actualRPM < requestedRPM) {
-			duty += 0.01;
+			duty += 0.01; //value to be determined
 		}
 
 	}
@@ -110,11 +110,9 @@ ISR(PCINT0_vect) {
 	TOCPMCOE ^= (1<<TOCC0OE) | (1<<TOCC2OE);
 	//capture timer 1 value to measure rpm.
 	rpmCounter = TCNT1;
-	/*if (interimValue == 4) {
-		measureRPM();
-	}
-	*/
+
 	measureRPM();
+    
 	interimValue += 1;
 	//reset timer 
 	TCNT1 = 0;
