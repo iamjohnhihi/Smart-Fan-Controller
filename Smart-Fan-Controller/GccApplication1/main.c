@@ -72,26 +72,21 @@ int main(void)
 	
 	//enable global interrupts
 	sei();
-
-	
-
 	
     while (1) 
     {
-        
 		if (actualRPM > requestedRPM){
 			duty -= 0.01; //value to be determined
 		}
 		else if (actualRPM < requestedRPM) {
 			duty += 0.01; //value to be determined
 		}
-
 	}
 }
 
 int measureRPM() {
-//use clock frequency to get actual value of initialRPM
-	//int actualRPM = 60*(rpmCounter/65536)*8000000;
+    //use clock frequency to get actual value of initialRPM
+	
 	int interimRPM += 60*8000000*(noOfOverflows + (rpmCounter/65536);
 	if (interimValue == 4) {
 		finalRPM = interimRPM
