@@ -3,6 +3,7 @@ GccApplication1.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
+<<<<<<< HEAD
   0 .data         00000008  00800100  00000724  000007b8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         00000724  00000000  00000000  00000094  2**1
@@ -28,12 +29,38 @@ Idx Name          Size      VMA       LMA       File off  Algn
  11 .debug_loc    00000148  00000000  00000000  00000e96  2**0
                   CONTENTS, READONLY, DEBUGGING
  12 .debug_ranges 00000028  00000000  00000000  00000fde  2**0
+=======
+  0 .data         00000000  00800100  00800100  00000136  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000000e2  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000136  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000168  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  000001a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000000c5  00000000  00000000  000001cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000008b  00000000  00000000  00000291  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000000c4  00000000  00000000  0000031c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  000003e0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000155  00000000  00000000  00000434  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000063  00000000  00000000  00000589  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  000005ec  2**0
+>>>>>>> 2601336d7930c62afd2b644fae01b27590d55bf1
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	1d c0       	rjmp	.+58     	; 0x3c <__ctors_end>
+<<<<<<< HEAD
    2:	37 c0       	rjmp	.+110    	; 0x72 <__bad_interrupt>
    4:	4b c1       	rjmp	.+662    	; 0x29c <__vector_2>
    6:	35 c0       	rjmp	.+106    	; 0x72 <__bad_interrupt>
@@ -63,6 +90,37 @@ Disassembly of section .text:
   36:	1d c0       	rjmp	.+58     	; 0x72 <__bad_interrupt>
   38:	1c c0       	rjmp	.+56     	; 0x72 <__bad_interrupt>
   3a:	1b c0       	rjmp	.+54     	; 0x72 <__bad_interrupt>
+=======
+   2:	24 c0       	rjmp	.+72     	; 0x4c <__bad_interrupt>
+   4:	54 c0       	rjmp	.+168    	; 0xae <__vector_2>
+   6:	22 c0       	rjmp	.+68     	; 0x4c <__bad_interrupt>
+   8:	21 c0       	rjmp	.+66     	; 0x4c <__bad_interrupt>
+   a:	20 c0       	rjmp	.+64     	; 0x4c <__bad_interrupt>
+   c:	1f c0       	rjmp	.+62     	; 0x4c <__bad_interrupt>
+   e:	1e c0       	rjmp	.+60     	; 0x4c <__bad_interrupt>
+  10:	1d c0       	rjmp	.+58     	; 0x4c <__bad_interrupt>
+  12:	1c c0       	rjmp	.+56     	; 0x4c <__bad_interrupt>
+  14:	1b c0       	rjmp	.+54     	; 0x4c <__bad_interrupt>
+  16:	1a c0       	rjmp	.+52     	; 0x4c <__bad_interrupt>
+  18:	19 c0       	rjmp	.+50     	; 0x4c <__bad_interrupt>
+  1a:	18 c0       	rjmp	.+48     	; 0x4c <__bad_interrupt>
+  1c:	17 c0       	rjmp	.+46     	; 0x4c <__bad_interrupt>
+  1e:	16 c0       	rjmp	.+44     	; 0x4c <__bad_interrupt>
+  20:	15 c0       	rjmp	.+42     	; 0x4c <__bad_interrupt>
+  22:	14 c0       	rjmp	.+40     	; 0x4c <__bad_interrupt>
+  24:	13 c0       	rjmp	.+38     	; 0x4c <__bad_interrupt>
+  26:	12 c0       	rjmp	.+36     	; 0x4c <__bad_interrupt>
+  28:	11 c0       	rjmp	.+34     	; 0x4c <__bad_interrupt>
+  2a:	10 c0       	rjmp	.+32     	; 0x4c <__bad_interrupt>
+  2c:	0f c0       	rjmp	.+30     	; 0x4c <__bad_interrupt>
+  2e:	0e c0       	rjmp	.+28     	; 0x4c <__bad_interrupt>
+  30:	0d c0       	rjmp	.+26     	; 0x4c <__bad_interrupt>
+  32:	0c c0       	rjmp	.+24     	; 0x4c <__bad_interrupt>
+  34:	0b c0       	rjmp	.+22     	; 0x4c <__bad_interrupt>
+  36:	0a c0       	rjmp	.+20     	; 0x4c <__bad_interrupt>
+  38:	09 c0       	rjmp	.+18     	; 0x4c <__bad_interrupt>
+  3a:	08 c0       	rjmp	.+16     	; 0x4c <__bad_interrupt>
+>>>>>>> 2601336d7930c62afd2b644fae01b27590d55bf1
 
 0000003c <__ctors_end>:
   3c:	11 24       	eor	r1, r1
@@ -71,6 +129,11 @@ Disassembly of section .text:
   42:	d2 e0       	ldi	r29, 0x02	; 2
   44:	de bf       	out	0x3e, r29	; 62
   46:	cd bf       	out	0x3d, r28	; 61
+<<<<<<< HEAD
+=======
+  48:	02 d0       	rcall	.+4      	; 0x4e <main>
+  4a:	49 c0       	rjmp	.+146    	; 0xde <_exit>
+>>>>>>> 2601336d7930c62afd2b644fae01b27590d55bf1
 
 00000048 <__do_copy_data>:
   48:	11 e0       	ldi	r17, 0x01	; 1
@@ -101,13 +164,18 @@ Disassembly of section .text:
   6e:	02 d0       	rcall	.+4      	; 0x74 <main>
   70:	57 c3       	rjmp	.+1710   	; 0x720 <_exit>
 
+<<<<<<< HEAD
 00000072 <__bad_interrupt>:
   72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
+=======
+0000004e <main>:
+>>>>>>> 2601336d7930c62afd2b644fae01b27590d55bf1
 
 00000074 <main>:
 
 int main(void)
 {
+<<<<<<< HEAD
 	
 	//Set up pins
     DDRA |= (1 << DDA1) | (1 << DDA3); //set PA1 and PA3 as output (to drive the switches) 
@@ -147,11 +215,43 @@ int main(void)
   94:	83 b7       	in	r24, 0x33	; 51
   96:	88 60       	ori	r24, 0x08	; 8
   98:	83 bf       	out	0x33, r24	; 51
+=======
+	//Set up pins
+    DDRA |= (1 << DDA1) | (1 << DDA3); //set PA1 and PA3 as output (to drive the switches) 
+  4e:	8a b3       	in	r24, 0x1a	; 26
+  50:	8a 60       	ori	r24, 0x0A	; 10
+  52:	8a bb       	out	0x1a, r24	; 26
+	
+	DDRA &= ~(1 << DDA7); //set PA2 as input (for hall-effect sensor) 
+  54:	d7 98       	cbi	0x1a, 7	; 26
+	
+	TCCR0B |= (1<< CS00); // clkI/O/(No prescaling)
+  56:	83 b7       	in	r24, 0x33	; 51
+  58:	81 60       	ori	r24, 0x01	; 1
+  5a:	83 bf       	out	0x33, r24	; 51
+	TCCR2B |= (1<< CS00);
+  5c:	e9 ec       	ldi	r30, 0xC9	; 201
+  5e:	f0 e0       	ldi	r31, 0x00	; 0
+  60:	80 81       	ld	r24, Z
+  62:	81 60       	ori	r24, 0x01	; 1
+  64:	80 83       	st	Z, r24
+	
+	// turn on Fast PWM Mode
+	TCCR0A |= ((1<< WGM01) | (1<< WGM00));
+  66:	80 b7       	in	r24, 0x30	; 48
+  68:	83 60       	ori	r24, 0x03	; 3
+  6a:	80 bf       	out	0x30, r24	; 48
+	TCCR0B |= (1<< WGM02);
+  6c:	83 b7       	in	r24, 0x33	; 51
+  6e:	88 60       	ori	r24, 0x08	; 8
+  70:	83 bf       	out	0x33, r24	; 51
+>>>>>>> 2601336d7930c62afd2b644fae01b27590d55bf1
 
 	// Set Values for Duty Cycle and Frequency
 	uint8_t TOP = 250;
 	
 	OCR0A = TOP;
+<<<<<<< HEAD
   9a:	8a ef       	ldi	r24, 0xFA	; 250
   9c:	86 bf       	out	0x36, r24	; 54
 	OCR0B = TOP*duty;
@@ -1061,3 +1161,100 @@ ISR(PCINT0_vect) {
 
 00000722 <__stop_program>:
  722:	ff cf       	rjmp	.-2      	; 0x722 <__stop_program>
+=======
+  72:	8a ef       	ldi	r24, 0xFA	; 250
+  74:	86 bf       	out	0x36, r24	; 54
+	OCR0B = TOP*Duty;
+  76:	8d e7       	ldi	r24, 0x7D	; 125
+  78:	8c bf       	out	0x3c, r24	; 60
+
+	TOCPMSA0 &= ~((1<< TOCC0S0) | (1<< TOCC0S1)); //routes the output of OC0B to TOCC0 (which corresponds PA1)
+  7a:	e7 e6       	ldi	r30, 0x67	; 103
+  7c:	f0 e0       	ldi	r31, 0x00	; 0
+  7e:	80 81       	ld	r24, Z
+  80:	8c 7f       	andi	r24, 0xFC	; 252
+  82:	80 83       	st	Z, r24
+
+	//routes the output of OC0B to TOCC2 (which corresponds PA3)
+	TOCPMSA0 &= ~((1<< TOCC2S0) | (1<< TOCC2S1));
+  84:	80 81       	ld	r24, Z
+  86:	8f 7c       	andi	r24, 0xCF	; 207
+  88:	80 83       	st	Z, r24
+
+	// Clear OC0B when Compare Match
+	TCCR0A |= (1<< COM0B1);
+  8a:	80 b7       	in	r24, 0x30	; 48
+  8c:	80 62       	ori	r24, 0x20	; 32
+  8e:	80 bf       	out	0x30, r24	; 48
+	//Enable output to respective pins
+	TOCPMCOE |= (1<< TOCC0OE);
+  90:	e6 e6       	ldi	r30, 0x66	; 102
+  92:	f0 e0       	ldi	r31, 0x00	; 0
+  94:	80 81       	ld	r24, Z
+  96:	81 60       	ori	r24, 0x01	; 1
+  98:	80 83       	st	Z, r24
+	
+	//set up interrupt
+	cli();
+  9a:	f8 94       	cli
+	//enable interrupt for PCINT7
+	PCMSK0 |= (1<< PCINT7);
+  9c:	97 9a       	sbi	0x12, 7	; 18
+	//Any logical change causes interrupt
+	MCUCR |= (1<< ISC00);
+  9e:	85 b7       	in	r24, 0x35	; 53
+  a0:	81 60       	ori	r24, 0x01	; 1
+  a2:	85 bf       	out	0x35, r24	; 53
+	//Enable pin change interrupt 0 
+	GIMSK |= (1<< PCIE0);
+  a4:	8b b7       	in	r24, 0x3b	; 59
+  a6:	80 61       	ori	r24, 0x10	; 16
+  a8:	8b bf       	out	0x3b, r24	; 59
+	sei();
+  aa:	78 94       	sei
+			PORTA &= ~(1 << PORTA1); //turn off PA1
+			} else { //if hall sensor signal is low
+			PORTA &= ~(1 << PORTA3); //turn off PA3
+			}
+			*/
+    }
+  ac:	ff cf       	rjmp	.-2      	; 0xac <main+0x5e>
+
+000000ae <__vector_2>:
+}
+
+ISR(PCINT0_vect) {
+  ae:	1f 92       	push	r1
+  b0:	0f 92       	push	r0
+  b2:	0f b6       	in	r0, 0x3f	; 63
+  b4:	0f 92       	push	r0
+  b6:	11 24       	eor	r1, r1
+  b8:	8f 93       	push	r24
+  ba:	9f 93       	push	r25
+  bc:	ef 93       	push	r30
+  be:	ff 93       	push	r31
+	//toggle output pins (PA3 and PA1) to output 1 PWM at a time
+	TOCPMCOE ^= (1<<TOCC0OE) | (1<<TOCC2OE);
+  c0:	e6 e6       	ldi	r30, 0x66	; 102
+  c2:	f0 e0       	ldi	r31, 0x00	; 0
+  c4:	90 81       	ld	r25, Z
+  c6:	85 e0       	ldi	r24, 0x05	; 5
+  c8:	89 27       	eor	r24, r25
+  ca:	80 83       	st	Z, r24
+}
+  cc:	ff 91       	pop	r31
+  ce:	ef 91       	pop	r30
+  d0:	9f 91       	pop	r25
+  d2:	8f 91       	pop	r24
+  d4:	0f 90       	pop	r0
+  d6:	0f be       	out	0x3f, r0	; 63
+  d8:	0f 90       	pop	r0
+  da:	1f 90       	pop	r1
+  dc:	18 95       	reti
+
+000000de <_exit>:
+  de:	f8 94       	cli
+
+000000e0 <__stop_program>:
+  e0:	ff cf       	rjmp	.-2      	; 0xe0 <__stop_program>
+>>>>>>> 2601336d7930c62afd2b644fae01b27590d55bf1
