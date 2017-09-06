@@ -11,7 +11,6 @@
 
  typedef void(*functionPointer)();
  typedef functionPointer(*State)();
-
  State idle();
  State receiveData();
  State start();
